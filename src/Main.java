@@ -39,7 +39,7 @@ public class Main {
         hungary.addNeighbour(austria);
         Map map = new Map(countries);
 
-        ArrayList<Map> solutions = new MapColouringCSP(map).getBackPropSolutions();
+        ArrayList<Map> solutions = new MapColouringCSP(map).getBacktrackSolutions();
         System.out.println("Poland as a starting country");
         for (Map solution: solutions) {
             System.out.println();
