@@ -44,7 +44,7 @@ public class MapGenerator {
 
         for (Country country: countries) {
             System.out.println(country.checkConstraintSatisfied());
-            System.out.println(country.checkConstraintSatisfiedWithColor(1));
+            System.out.println(country.checkConstraintSatisfiedWithValue(1));
         }
 
         return new Map(countries);

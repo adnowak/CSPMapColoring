@@ -2,30 +2,20 @@ package Models;
 
 import java.util.ArrayList;
 
-public class Map {
-    private ArrayList<Country> countries;
-
-    public Map(ArrayList<Country> countries) {
-        this.countries = countries;
+public class Map extends Problem<Country>{
+    public Map(ArrayList<Country> variables) {
+        this.variables = variables;
     }
 
     public Map(Map baseMap){
-        countries = new ArrayList<>();
-        for (Country baseCountry: baseMap.countries) {
-            countries.add(new Country(baseCountry));
+        variables = new ArrayList<>();
+        for (Country baseCountry: baseMap.variables) {
+            variables.add(new Country(baseCountry));
         }
     }
 
-    public boolean checkConstraintsSatisfied(){
-        for (Country country : countries) {
-            if(!country.checkConstraintSatisfied() || country.getColor() == 0){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public ArrayList<Country> getCountries() {
-        return countries;
+    @Override
+    public Map getCopy() {
+        return new Map(this);
     }
 }

@@ -2,34 +2,28 @@ package Models;
 
 import java.util.ArrayList;
 
-public class Country {
-    private int color;
+public class Country extends Variable{
     private ArrayList<Country> neighbours;
-    private ArrayList<Integer> domain;
 
     public Country(int domainSize){
-        color = 0;
+        value = 0;
         neighbours = new ArrayList<>();
-        this.domain = new ArrayList<>();
+        domain = new ArrayList<>();
         for(int i=0; i<domainSize; i++){
             domain.add(i+1);
         }
     }
 
     public Country(Country baseCountry){
-        color = baseCountry.getColor();
+        value = baseCountry.getValue();
         neighbours = baseCountry.getNeighbours();
         domain = new ArrayList<>();
         domain.addAll(baseCountry.getDomain());
     }
 
-    public boolean checkConstraintSatisfied(){
-        return checkConstraintSatisfiedWithColor(color);
-    }
-
-    public boolean checkConstraintSatisfiedWithColor(int color){
+    public boolean checkConstraintSatisfiedWithValue(int value){
         for (Country neighbour : neighbours) {
-            if(neighbour.getColor() == color){
+            if(neighbour.getValue() == value){
                 return false;
             }
         }
@@ -40,27 +34,11 @@ public class Country {
         neighbours.add(neighbour);
     }
 
-    public int getColor() {
-        return color;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
-    }
-
-    public ArrayList<Country> getNeighbours() {
-        return neighbours;
-    }
-
     public void setNeighbours(ArrayList<Country> neighbours) {
         this.neighbours = neighbours;
     }
 
-    public ArrayList<Integer> getDomain() {
-        return domain;
-    }
-
-    public void setDomain(ArrayList<Integer> domain) {
-        this.domain = domain;
+    public ArrayList<Country> getNeighbours() {
+        return neighbours;
     }
 }
