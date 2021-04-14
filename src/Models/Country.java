@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class Country extends Variable{
     private ArrayList<Country> neighbours;
+    private int domainSize;
 
     public Country(int domainSize){
+        this.domainSize = domainSize;
         value = 0;
         neighbours = new ArrayList<>();
         domain = new ArrayList<>();
@@ -15,6 +17,7 @@ public class Country extends Variable{
     }
 
     public Country(Country baseCountry){
+        domainSize = baseCountry.domainSize;
         value = baseCountry.getValue();
         neighbours = baseCountry.getNeighbours();
         domain = new ArrayList<>();
@@ -28,6 +31,14 @@ public class Country extends Variable{
             }
         }
         return true;
+    }
+
+    @Override
+    public void resetDomain() {
+        domain = new ArrayList<>();
+        for(int i=0; i<domainSize; i++){
+            domain.add(i+1);
+        }
     }
 
     public void addNeighbour(Country neighbour){

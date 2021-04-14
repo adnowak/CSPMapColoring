@@ -14,6 +14,7 @@ public class HouseConfiguration extends Variable{
     //animal = (value-1)/625
     //
     //    pierwszy dom	drugi dom	            trzeci dom	            czwarty dom	        piąty dom
+    //
     //    Norweg	    Duńczyk	                Anglik	                Niemiec	            Szwed
     //    żółty	        niebieski	            czerwony	            zielony	            biały
     //    woda	        herbata	                mleko	                kawa	            piwo
@@ -203,6 +204,14 @@ public class HouseConfiguration extends Variable{
         }
 
         return true;
+    }
+
+    @Override
+    public void resetDomain() {
+        domain = new ArrayList<>();
+        for(int i=0; i<3125; i++){
+            domain.add(i+1);
+        }
     }
 
     public int getHouseIndex() {
